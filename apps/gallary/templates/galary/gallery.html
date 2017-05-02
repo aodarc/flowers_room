@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script_header %}
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.quicksand.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="container main-container">
+    <!-- Page Content
+    ================================================== -->
+    <div class="row">
+
+      <!-- Gallery Items
+      ================================================== -->
+      <div class="span12 gallery">
+
+        <ul id="filterOptions" class="gallery-cats clearfix">
+          <li class="active"><a href="#" class="all">All</a></li>
+          <li><a href="#" class="illustration">Illustration</a></li>
+          <li><a href="#" class="design">Design</a></li>
+          <li><a href="#" class="video">Video</a></li>
+          <li><a href="#" class="web">Web</a></li>
+        </ul>
+
+        <div class="row clearfix">
+          <ul class="gallery-post-grid holder">
+            {#           data-type="illustration" or something much 'web illustration' 'video design' #}
+
+            {% for _ in "012345678912" %}
+              {% include 'galary/content_block__gallery_item.html' with counter=forloop.counter %}
+            {% endfor %}
+
+          </ul>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <ul>
+            <li class="active"><a href="#">Prev</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div>
+
+      </div><!-- End gallery list-->
+
+    </div><!-- End container row -->
+
+  </div> <!-- End Container -->
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load static %}
+
+<!-- Gallery Item 1 -->
+<li class="span4 gallery-item" data-id="id-{{ counter }}" data-type="illustration">
+                        <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{% static 'img/gallery/gallery-img-1-full.jpg' %}"
+                                   class="item-zoom-link lightbox"
+                                   title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="gallery-single.htm" class="item-details-link"></a>
+                            </span>
+                        </span>
+  <a href="gallery-single.htm"><img src="{% static 'img/gallery/gallery-img-1-3col.jpg' %}" alt="Gallery"></a>
+  <span class="project-details"><a
+      href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
+</li>
