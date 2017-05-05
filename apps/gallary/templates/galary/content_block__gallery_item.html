@@ -4,13 +4,16 @@
 <li class="span4 gallery-item" data-id="id-{{ counter }}" data-type="illustration">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="{% static 'img/gallery/gallery-img-1-full.jpg' %}"
+                                <a href="{{ item.image.url }}"
                                    class="item-zoom-link lightbox"
                                    title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
-  <a href="gallery-single.htm"><img src="{% static 'img/gallery/gallery-img-1-3col.jpg' %}" alt="Gallery"></a>
+  <a href="gallery-single.htm">
+    {#    <img src="{{ item.image.url }}" width="100%" alt="Gallery">#}
+    <div class="gallery-img" style="background-image: url({{ item.image.url }})"></div>
+  </a>
   <span class="project-details"><a
-      href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
+      href="{% if albums %}{% url 'gallery' %}{% endif %}">{{ item.title }}</a>{{ item.description|slice:":40" }}</span>
 </li>

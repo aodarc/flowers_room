@@ -28,8 +28,8 @@
           <ul class="gallery-post-grid holder">
             {#           data-type="illustration" or something much 'web illustration' 'video design' #}
 
-            {% for _ in "012345678912" %}
-              {% include 'galary/content_block__gallery_item.html' with counter=forloop.counter %}
+            {% for elem in data %}
+              {% include 'galary/content_block__gallery_item.html' with counter=forloop.counter item=elem %}
             {% endfor %}
 
           </ul>
