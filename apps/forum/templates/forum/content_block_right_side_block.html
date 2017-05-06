@@ -14,19 +14,18 @@
   </section>
 
   <!--Categories-->
-  <h5 class="title-bg">Categories</h5>
+  <h5 class="title-bg">Категорії</h5>
   <ul class="post-category-list">
-    <li><a href="#"><i class="icon-plus-sign"></i>Design</a></li>
-    <li><a href="#"><i class="icon-plus-sign"></i>Illustration</a></li>
-    <li><a href="#"><i class="icon-plus-sign"></i>Tutorials</a></li>
-    <li><a href="#"><i class="icon-plus-sign"></i>News</a></li>
+    {% for item in right_categories %}
+    <li><a href="{% url 'forum' %}?category={{ item.id }}"><i class="icon-plus-sign"></i>{{ item.name }}</a></li>
+    {% endfor %}
   </ul>
 
   <!--Popular Posts-->
   <h5 class="title-bg">Популярні публікації</h5>
   <ul class="popular-posts">
 
-    {% for _ in "123" %}
+    {% for item in right_posts %}
       {% include 'forum/content_block__forum_popular_post.html' %}
     {% endfor %}
 

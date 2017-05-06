@@ -1,6 +1,8 @@
 {% load static %}
 <li>
-  <a href="blog-single.htm"><img src="{% static 'img/gallery/gallery-img-2-thumb.jpg' %}" alt="Popular Post"></a>
-  <h6><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></h6>
-  <em>Posted on 09/01/15</em>
+  <a href="{% url 'forum_single' item.id %}">
+    <div class="right-side-post" style=" background-image: url({{ item.image.url }})"></div>
+  </a>
+  <h6><a href="#">{{ item.title }}</a></h6>
+  <em>Опубліковано {{ item.created|date:"d/m/Y" }}</em>
 </li>

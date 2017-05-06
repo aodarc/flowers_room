@@ -6,8 +6,8 @@
   <div class="container">
     <div class="row footer-row">
       <div class="span3 footer-col">
-        <h5>About Us</h5>
-        <img src="{% static 'img/piccolo-footer-logo.png' %}" alt="Piccolo"/><br/><br/>
+        <h5>Про нас</h5>
+        <img src="{% static 'img/logo.svg' %}" alt="Piccolo"/><br/><br/>
         <address>
           <strong>Design Team</strong><br/>
           123 Main St, Suite 500<br/>
@@ -34,13 +34,11 @@
         </ul>
       </div>
       <div class="span3 footer-col">
-        <h5>Latest Posts</h5>
+        <h5>Останні публікації</h5>
         <ul class="post-list">
-          <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-          <li><a href="#">Consectetur adipiscing elit est lacus gravida</a></li>
-          <li><a href="#">Lectus sed orci molestie molestie etiam</a></li>
-          <li><a href="#">Mattis consectetur adipiscing elit est lacus</a></li>
-          <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
+          {% for p in footer_posts %}
+          <li><a href="{% url 'forum_single' p.id %}">{{ p.title }}</a></li>
+          {% endfor %}
         </ul>
       </div>
       <div class="span3 footer-col">

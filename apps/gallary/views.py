@@ -1,13 +1,10 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.views import View
 from django.views.generic import TemplateView
 
 from apps.gallary.models import Album, Photo
+from flora_project.mixins import RightSideContextMixin, FooterContextMixin
 
 
-class GalleryView(TemplateView):
+class GalleryView(FooterContextMixin, RightSideContextMixin, TemplateView):
     template_name = 'galary/gallery.html'
 
     def get_context_data(self, **kwargs):
@@ -20,7 +17,7 @@ class GalleryView(TemplateView):
         return context
 
 
-class PhotoView(TemplateView):
+class PhotoView(FooterContextMixin, RightSideContextMixin, TemplateView):
     template_name = 'galary/gallery.html'
 
     def get_context_data(self, **kwargs):
@@ -34,7 +31,7 @@ class PhotoView(TemplateView):
         return context
 
 
-class PhotoDetailView(TemplateView):
+class PhotoDetailView(FooterContextMixin, TemplateView):
     template_name = 'galary/photo_detail.html'
 
     def get_context_data(self, **kwargs):

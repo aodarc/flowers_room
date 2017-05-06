@@ -16,10 +16,13 @@ class Category(models.Model):
 
 class Post(models.Model):
     created = models.DateField(auto_now_add=True, verbose_name='Доданий')
+    image = models.ImageField(upload_to='posts')
     author = models.ForeignKey(to=User, verbose_name='Автор')
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = RichTextUploadingField(verbose_name="Опис")
     category = models.ForeignKey(to=Category, related_name='posts')
+    tags = models.ManyToManyField(to='Tag', related_name='posts')
+
 
     def __str__(self):
         return 'ID({}) {}'.format(self.id, self.title)
@@ -27,7 +30,6 @@ class Post(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=255, verbose_name='Тег', db_index=True)
-    posts = models.ManyToManyField(to=Post, related_name='tags')
 
     def __str__(self):
         return self.name

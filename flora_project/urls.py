@@ -25,8 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', MainPageView.as_view(), name='main_page'),
-    url(r'^forum$', TemplateView.as_view(template_name='forum/forum.html'), name='forum'),
-    url(r'^forum/(?P<pk>\d+)$', TemplateView.as_view(template_name='forum/forum_single_post.html'), name='forum_single'),
+    url(r'^forum/', include('apps.forum.urls')),
     url(r'^gallery/', include('apps.gallary.urls'))
 ]
 

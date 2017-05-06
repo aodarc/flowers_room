@@ -20,57 +20,23 @@
 
         <!-- Blog Post 1 -->
         <article>
-          <h3 class="title-bg"><a href="#">A subject that is beautiful in itself</a></h3>
+          <h3 class="title-bg"><a href="#">{{ post.title }}</a></h3>
           <div class="post-content">
-            <a href="#"><img src="{% static 'img/gallery/post-img-1.jpg' %}" alt="Post Thumb"></a>
+            <a href="#"><img width="100%" src="{{ post.image.url }}" alt="Post Thumb"></a>
 
             <div class="post-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc
-                iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt
-                sem
-                eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla
-                faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus
-                vitae id dui. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae
-                laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam
-                sit
-                amet felis non lorem faucibus rhoncus vitae id dui.Nulla iaculis mattis lorem, quis gravida nunc iaculis
-                ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu
-                magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla
-                faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus
-                vitae id dui.</p>
-
-              <p class="well"><a href="#" rel="tooltip" title="An important message">Proin tristique</a> tellus in est
-                vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas
-                felis
-                tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac
-                euismod
-                odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
-
-              <p> Nam sit amet felis non lorem faucibus rhoncus vitae id dui. Vivamus tincidunt sem eu magna varius
-                elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula
-                eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id
-                dui.</p>
-
-              <blockquote>
-                Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante
-                varius ac euismod odio placerat.
-              </blockquote>
-
-              <p>Nam sit amet felis non lorem faucibus rhoncus vitae id dui.Nulla iaculis mattis lorem, quis gravida
-                nunc
-                iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt
-                sem
-                eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla
-                faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus
-                vitae id dui.</p>
+              {{ post.description|safe }}
             </div>
 
             <div class="post-summary-footer">
               <ul class="post-data">
-                <li><i class="icon-calendar"></i> 09/04/15</li>
-                <li><i class="icon-user"></i> <a href="#">Admin</a></li>
-                <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
-                <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
+                <li><i class="icon-calendar"></i> {{ post.created|date:"d/m/Y" }}</li>
+                <li><i class="icon-user"></i> <a href="#">{{ post.author.get_full_name }}</a></li>
+                <li><i class="icon-comment"></i> <a href="#">{{ post.commensts.count }} Коментарів</a></li>
+                <li><i class="icon-tags"></i>
+                  <a href="#">photoshop</a>,
+                  <a href="#">tutorials</a>,
+                  <a href="#">illustration</a>
                 </li>
               </ul>
             </div>
