@@ -5,9 +5,9 @@
 <div class="footer-container"><!-- Begin Footer -->
   <div class="container">
     <div class="row footer-row">
-      <div class="span3 footer-col">
+      <div class="span4 footer-col">
         <h5>Про нас</h5>
-        <img src="{% static 'img/logo.svg' %}" alt="Piccolo"/><br/><br/>
+        <img src="{% static 'img/logo-footer.svg' %}" alt="Piccolo"/><br/><br/>
         <address>
           <strong>Design Team</strong><br/>
           123 Main St, Suite 500<br/>
@@ -21,42 +21,22 @@
           <li><a href="#" class="social-icon forrst"></a></li>
         </ul>
       </div>
-      <div class="span3 footer-col">
-        <h5>Latest Tweets</h5>
-        <ul>
-          <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-          <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi
-            blandit ultricies ultrices.
-          </li>
-          <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu orci rutrum
-            aliquam.
-          </li>
-        </ul>
-      </div>
-      <div class="span3 footer-col">
+      <div class="span4 footer-col">
         <h5>Останні публікації</h5>
         <ul class="post-list">
           {% for p in footer_posts %}
-          <li><a href="{% url 'forum_single' p.id %}">{{ p.title }}</a></li>
+            <li><a href="{% url 'forum_single' p.id %}">{{ p.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
-      <div class="span3 footer-col">
+      <div class="span4 footer-col">
         <h5>Flickr Photos</h5>
         <ul class="img-feed">
           {# {{ random_photos }} #}
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
-          <li><a href="#"><img src="{% static 'img/gallery/flickr-img-1.jpg' %}" alt="Image Feed"></a></li>
+          {% for p in footer_photos %}
+            <li><a href="{% url 'gallery-photo-detail' p.album_id p.id %}"><img width="60px" src="{{ p.image.url }}"
+                                                                                alt="Image Feed"></a></li>
+          {% endfor %}
         </ul>
       </div>
     </div>
@@ -67,9 +47,10 @@
           <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
           <div class="span6">
                             <span class="right">
-                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                                href="#">Gallery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                                href="#">Contact</a>
+                            <a href="{% url 'main_page' %}">Домівка</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                href="{% url 'gallery' %}">Галерея</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                href="{% url 'forum' %}">Форум</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                href="#">Контакти</a>
                             </span>
           </div>
         </div>

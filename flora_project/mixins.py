@@ -21,8 +21,7 @@ class FooterContextMixin(ContextMixin):
         context = super().get_context_data(**kwargs)
         context.update({
             'footer_photos': Photo.objects.all()[:12],
-            'footer_posts': Post.objects.all()[:5],
-            'footer_comments': Comment.objects.all()[:3]
+            'footer_posts': Post.objects.all()[:6],
         })
 
         return context

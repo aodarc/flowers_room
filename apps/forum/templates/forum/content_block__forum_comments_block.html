@@ -1,35 +1,30 @@
 {% load static %}
 <section class="comments">
-  <h4 class="title-bg"><a name="comments"></a>5 Comments so far</h4>
+  <h4 class="title-bg"><a name="comments"></a>{{ post.comments.count }} Коментарів</h4>
   <ul>
-    {% for _ in "123" %}
-      {% include 'forum/content_block__forum_comment.html' with counter=forloop.counter %}
+    {% for comment in post.comments.all %}
+      {% include 'forum/content_block__forum_comment.html' %}
     {% endfor %}
 
   </ul>
 
-  <!-- Comment Form -->
-  <div class="comment-form-container">
-    <h6>Залишити відгук</h6>
-    <form action="#" id="comment-form">
-      <div class="input-prepend">
-        <span class="add-on"><i class="icon-user"></i></span>
-        <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
-      </div>
-      <div class="input-prepend">
-        <span class="add-on"><i class="icon-envelope"></i></span>
-        <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
-      </div>
-      <div class="input-prepend">
-        <span class="add-on"><i class="icon-globe"></i></span>
-        <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
-      </div>
-      <textarea class="span6"></textarea>
-      <div class="row">
-        <div class="span2">
-          <input type="submit" class="btn btn-inverse" value="Post My Comment">
+  {% if request.user.is_authenticated %}
+    <!-- Comment Form -->
+    <div class="comment-form-container">
+      <h6>Залишити відгук</h6>
+      <form action="{% url 'forum-add-comment' post.id %}" method="post" id="comment-form">
+        {% csrf_token %}
+        <div class="input-prepend">
+          <span class="add-on"><i class="icon-user"></i></span>
+          <input disabled class="span4" size="16" type="text" placeholder="{{ request.user.get_full_name }}">
         </div>
-      </div>
-    </form>
-  </div>
+        {{ form.text }}
+        <div class="row">
+          <div class="span2">
+            <input type="submit" class="btn btn-inverse" value="Post My Comment">
+          </div>
+        </div>
+      </form>
+    </div>
+  {% endif %}
 </section><!-- Close comments section-->

@@ -45,5 +45,11 @@ class Comment(models.Model):
         return 'ID({}) PostID({}) Author({})'.format(self.id, self.post_id, self.author_id)
 
 
-class Answer(Comment):
+class Answer(models.Model):
     comment = models.ForeignKey(to=Comment, verbose_name='До коментаря', related_name='answers')
+    text = RichTextUploadingField(verbose_name="Текст коментаря")
+    author = models.ForeignKey(to=User, verbose_name='Автор')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'ID({}) CommentID({}) Author({})'.format(self.id, self.comment_id, self.author_id)

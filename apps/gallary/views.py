@@ -8,7 +8,7 @@ class GalleryView(FooterContextMixin, RightSideContextMixin, TemplateView):
     template_name = 'galary/gallery.html'
 
     def get_context_data(self, **kwargs):
-        context = {}
+        context = super().get_context_data(**kwargs)
         queryset = Album.objects.all()[:12]
 
         context['data'] = queryset
@@ -21,7 +21,7 @@ class PhotoView(FooterContextMixin, RightSideContextMixin, TemplateView):
     template_name = 'galary/gallery.html'
 
     def get_context_data(self, **kwargs):
-        context = {}
+        context = super().get_context_data(**kwargs)
         queryset = Photo.objects.filter(album_id=self.kwargs['pk'])[:12]
 
         context['album_id'] = self.kwargs['pk']
@@ -35,7 +35,7 @@ class PhotoDetailView(FooterContextMixin, TemplateView):
     template_name = 'galary/photo_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = {}
+        context = super().get_context_data(**kwargs)
         queryset = Photo.objects.get(id=self.kwargs['p_pk'])
 
         context['photo'] = queryset

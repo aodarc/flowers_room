@@ -32,7 +32,7 @@
               <ul class="post-data">
                 <li><i class="icon-calendar"></i> {{ post.created|date:"d/m/Y" }}</li>
                 <li><i class="icon-user"></i> <a href="#">{{ post.author.get_full_name }}</a></li>
-                <li><i class="icon-comment"></i> <a href="#">{{ post.commensts.count }} Коментарів</a></li>
+                <li><i class="icon-comment"></i> <a href="#">{{ post.comments.count }} Коментарів</a></li>
                 <li><i class="icon-tags"></i>
                   <a href="#">photoshop</a>,
                   <a href="#">tutorials</a>,
@@ -58,8 +58,9 @@
 
         <!-- Post Comments
         ================================================== -->
-        {% include 'forum/content_block__forum_comments_block.html' %}
-
+        {% if post.comments %}
+          {% include 'forum/content_block__forum_comments_block.html' %}
+        {% endif %}
       </div><!--Close container row-->
 
       {% include 'forum/content_block_right_side_block.html' %}

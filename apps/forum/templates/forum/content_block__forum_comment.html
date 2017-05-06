@@ -2,14 +2,12 @@
 
 <li>
   <img src="{% static 'img/user-avatar.jpg' %}" alt="Image"/>
-  <span class="comment-name">John Doe</span>
-  <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-  <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis,
-    ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est
-    lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare
-    tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.
+  <span class="comment-name">{{ comment.author.get_full_name }}</span>
+  <span class="comment-date">{{ comment.created|date:"F d, Y" }} | <a href="#">Відповісти</a></span>
+  <div class="comment-content">
+    {{ comment.text|safe }}
   </div>
-  {% if counter == 2 %}
+  {% if comment.answers %}
     {% include 'forum/content_block__forum_comment_replay.html' %}
   {% endif %}
 </li>
