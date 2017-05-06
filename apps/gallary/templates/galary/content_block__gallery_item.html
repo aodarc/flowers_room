@@ -15,5 +15,5 @@
     <div class="gallery-img" style="background-image: url({{ item.image.url }})"></div>
   </a>
   <span class="project-details"><a
-      href="{% if albums %}{% url 'gallery-photo' item.pk %}{% endif %}">{{ item.title }}</a>{{ item.description|slice:":40" }}</span>
+      href="{% if albums %}{% url 'gallery-photo' item.pk %}{% else %}{% url 'gallery-photo-detail' album_id item.id %}{% endif %}">{{ item.title }}</a>{{ item.description|slice:":40" }}</span>
 </li>

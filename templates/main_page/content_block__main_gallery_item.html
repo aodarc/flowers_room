@@ -1,0 +1,17 @@
+{% load static %}
+<li class="span3 gallery-item" data-id="id-6" data-type="illustration design">
+                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{{ item.image.url }}"
+                                   class="item-zoom-link lightbox"
+                                   title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                <a href="{% url 'gallery-photo' item.id %}" class="item-details-link"></a>
+                            </span>
+                        </span>
+  <a href="{% url 'gallery-photo' item.id %}">
+    <div class="gallery-img gallery-4col" style="background-image: url({{ item.image.url }}) "></div>
+  </a>
+  <span class="project-details">
+    <a href="{% url 'gallery-photo' item.id %}">{{ item.title }}</a> Creative storyboard illustration
+  </span>
+</li>

@@ -27,17 +27,19 @@ class PhotoView(TemplateView):
         context = {}
         queryset = Photo.objects.filter(album_id=self.kwargs['pk'])[:12]
 
+        context['album_id'] = self.kwargs['pk']
         context['data'] = queryset
         context['photos'] = True
 
         return context
 
+
 class PhotoDetailView(TemplateView):
-    template_name = 'galary/gallery.html'
+    template_name = 'galary/photo_detail.html'
 
     def get_context_data(self, **kwargs):
         context = {}
-        queryset = Photo.objects.get(id=self.kwargs['pk'])
+        queryset = Photo.objects.get(id=self.kwargs['p_pk'])
 
         context['photo'] = queryset
 

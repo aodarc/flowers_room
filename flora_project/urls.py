@@ -19,13 +19,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from flora_project.views import MainPageView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^$', TemplateView.as_view(template_name='main_page/main.html'), name='main_page'),
+    url(r'^$', MainPageView.as_view(), name='main_page'),
     url(r'^forum$', TemplateView.as_view(template_name='forum/forum.html'), name='forum'),
-    url(r'^forum/1$', TemplateView.as_view(template_name='forum/forum_single_post.html'), name='forum_single'),
-    url(r'^gallery', include('apps.gallary.urls'))
+    url(r'^forum/(?P<pk>\d+)$', TemplateView.as_view(template_name='forum/forum_single_post.html'), name='forum_single'),
+    url(r'^gallery/', include('apps.gallary.urls'))
 ]
 
 if settings.DEBUG:
