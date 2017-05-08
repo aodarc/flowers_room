@@ -96,6 +96,22 @@ blockquote.pull-right {
 /**************************************
 / Header
 **************************************/
+
+/*Registration form*/
+#registration .modal-body{
+    overflow: hidden;
+}
+#registration .tab-content {
+    overflow: hidden;
+}
+#registration .form-group{
+    padding: 10px 0;
+}
+
+#registration
+
+/* END Registration*/
+
 .logo {
     margin-top: 10px;
 }

@@ -9,7 +9,9 @@
   <!-- CSS
   ================================================== -->
   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
   <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.css' %}">
   <link rel="stylesheet" href="{% static 'css/prettyPhoto.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/flexslider.css' %}"/>
@@ -59,5 +61,8 @@
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
+{% if not request.user.is_authenticated %}
+  {% include 'registration_modal_form.html' %}
+{% endif %}
 </body>
 </html>

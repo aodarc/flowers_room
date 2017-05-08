@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from apps.userprofile.views import RegistrationView, LogInView, LogOutView
 from flora_project.views import MainPageView
 
 urlpatterns = [
@@ -26,7 +27,10 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', MainPageView.as_view(), name='main_page'),
     url(r'^forum/', include('apps.forum.urls')),
-    url(r'^gallery/', include('apps.gallary.urls'))
+    url(r'^gallery/', include('apps.gallary.urls')),
+    url(r'^log-in$', LogInView.as_view(), name='login'),
+    url(r'^log-out$', LogOutView.as_view(), name='logout'),
+    url(r'^registration$', RegistrationView.as_view(), name='registration')
 ]
 
 if settings.DEBUG:

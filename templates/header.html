@@ -17,27 +17,28 @@
         <li class="active"><a href="{% url 'main_page' %}">Головна</a></li>
         <li><a href="{% url 'gallery' %}">Галерея</a></li>
 
-{#        <li class="dropdown">#}
-{#          <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>#}
-{#          <ul class="dropdown-menu">#}
-{#            <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>#}
-{#            <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>#}
-{#            <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>#}
-{#            <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>#}
-{#            <li><a href="gallery-single.htm">Gallery Single</a></li>#}
-{#          </ul>#}
-{#        </li>#}
+        {#        <li class="dropdown">#}
+        {#          <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>#}
+        {#          <ul class="dropdown-menu">#}
+        {#            <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>#}
+        {#            <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>#}
+        {#            <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>#}
+        {#            <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>#}
+        {#            <li><a href="gallery-single.htm">Gallery Single</a></li>#}
+        {#          </ul>#}
+        {#        </li>#}
         <li><a href="{% url 'forum' %}">Форум</a></li>
 
-        <li><a href="page-contact.htm">Контаки</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Увійти <b class="caret"></b></a>
+        {% if not request.user.is_authenticated %}
+          <li><a href="page-contact.htm" data-toggle="modal" data-target="#registration">Увійти</a></li>
+        {% else %}
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ request.user.get_full_name }} <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Реєстрація</a></li>
-            <li><a href="#">Вихід</a></li>
+            <li><a href="{% url 'logout' %}">Вихід</a></li>
           </ul>
         </li>
-
+        {% endif %}
       </ul>
 
     </div>

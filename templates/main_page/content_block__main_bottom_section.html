@@ -6,7 +6,7 @@
     ================================================== -->
   <div class="span6">
 
-    <h5 class="title-bg">From the Blog
+    <h5 class="title-bg">Останні публікації
       <small>All the latest news</small>
       <button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
       <button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
@@ -17,77 +17,29 @@
       <!-- Carousel items -->
       <div class="carousel-inner">
 
-        <!-- Blog Item 1 -->
-        <div class="active item">
-          <a href="blog-single.htm"><img src="{% static 'img/gallery/blog-med-img-1.jpg' %}" alt=""
-                                         class="align-left blog-thumb-preview"/></a>
-          <div class="post-info clearfix">
-            <h4><a href="blog-single.htm">A subject that is beautiful in itself</a></h4>
-            <ul class="blog-details-preview">
-              <li><i class="icon-calendar"></i><strong>Posted on:</strong> Sept 4, 2015
-              <li>
-              <li><i class="icon-user"></i><strong>Posted by:</strong> <a href="#" title="Link">Admin</a>
-              <li>
-              <li><i class="icon-comment"></i><strong>Comments:</strong> <a href="#" title="Link">12</a>
-              <li>
-              <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
-            </ul>
+        {% for p in lasted_post %}
+          <!-- Blog Item 1 -->
+          <div class="{% if forloop.first %}active{% endif %} item">
+            <a href="{% url 'forum_single' p.id %}"><img style="max-width: 360px" src="{{ p.image.url }}" alt=""
+                                           class="align-left blog-thumb-preview"/></a>
+            <div class="post-info clearfix">
+              <h4><a href="{% url 'forum_single' p.id %}">{{ p.title }}</a></h4>
+              <ul class="blog-details-preview">
+                <li><i class="icon-calendar"></i><strong>Опубліковано:</strong> {{ p.created|date:"j m, Y" }}
+                <li>
+                <li><i class="icon-user"></i><strong>Опубліковано:</strong> <a href="#" title="Link">{{ p.author.get_full_name }}</a>
+                <li>
+                <li><i class="icon-comment"></i><strong>Коментарів:</strong> <a href="#" title="Link">{{ p.comments.count }}</a>
+                <li>
+                <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
+              </ul>
+            </div>
+            <p class="blog-summary">
+{#              {{ p.description }}#}
+{#              <a href="{% url 'forum_single' p.id %}">Читати більше</a>#}
+            <p>
           </div>
-          <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis
-            fermentum
-            ipsum molestie sed porttitor ligula rutrum. Vestibulum lectus tellus, aliquet et iaculis sed, volutpat
-            vel
-            erat. <a href="#">Read more</a>
-          <p>
-        </div>
-
-        <!-- Blog Item 2 -->
-        <div class="item">
-          <a href="blog-single.htm"><img src="{% static 'img/gallery/blog-med-img-1.jpg' %}" alt=""
-                                         class="align-left blog-thumb-preview"/></a>
-          <div class="post-info clearfix">
-            <h4><a href="blog-single.htm">A great artist is always before his time</a></h4>
-            <ul class="blog-details-preview">
-              <li><i class="icon-calendar"></i><strong>Posted on:</strong> Sept 4, 2015
-              <li>
-              <li><i class="icon-user"></i><strong>Posted by:</strong> <a href="#" title="Link">Admin</a>
-              <li>
-              <li><i class="icon-comment"></i><strong>Comments:</strong> <a href="#" title="Link">12</a>
-              <li>
-              <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
-            </ul>
-          </div>
-          <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis
-            fermentum
-            ipsum molestie sed porttitor ligula rutrum. Vestibulum lectus tellus, aliquet et iaculis sed, volutpat
-            vel
-            erat. <a href="#">Read more</a>
-          <p>
-        </div>
-
-        <!-- Blog Item 3 -->
-        <div class="item">
-          <a href="blog-single.htm"><img src="{% static 'img/gallery/blog-med-img-1.jpg' %}" alt=""
-                                         class="align-left blog-thumb-preview"/></a>
-          <div class="post-info clearfix">
-            <h4><a href="blog-single.htm">Is art everything to anybody?</a></h4>
-            <ul class="blog-details-preview">
-              <li><i class="icon-calendar"></i><strong>Posted on:</strong> Sept 4, 2015
-              <li>
-              <li><i class="icon-user"></i><strong>Posted by:</strong> <a href="#" title="Link">Admin</a>
-              <li>
-              <li><i class="icon-comment"></i><strong>Comments:</strong> <a href="#" title="Link">12</a>
-              <li>
-              <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
-            </ul>
-          </div>
-          <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis
-            fermentum
-            ipsum molestie sed porttitor ligula rutrum. Vestibulum lectus tellus, aliquet et iaculis sed, volutpat
-            vel
-            erat. <a href="#">Read more</a>
-          <p>
-        </div>
+        {% endfor %}
 
       </div>
     </div>
