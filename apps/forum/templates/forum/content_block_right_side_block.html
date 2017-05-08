@@ -6,8 +6,8 @@
   <!--Search-->
   <section>
     <div class="input-append">
-      <form action="#">
-        <input id="appendedInputButton" size="16" type="text" placeholder="Search">
+      <form action="{% url 'forum' %}">
+        <input id="appendedInputButton" name="search" size="32" type="text" placeholder="Search">
         <button class="btn" type="button"><i class="icon-search"></i></button>
       </form>
     </div>
