@@ -10,7 +10,7 @@ class RightSideContextMixin(ContextMixin):
         context = super().get_context_data(**kwargs)
         context.update({
             'right_posts': Post.objects.all()[:3],
-            'right_categories': Category.objects.all(),
+            'right_categories': Category.objects.all().order_by('name'),
             'right_comments': Comment.objects.all()[:5]
         })
 

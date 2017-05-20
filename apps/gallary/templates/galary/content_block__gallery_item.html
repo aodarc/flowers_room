@@ -7,13 +7,18 @@
                                 <a href="{{ item.image.url }}"
                                    class="item-zoom-link lightbox"
                                    title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
+                                <a href="#" class="item-details-link"></a>
                             </span>
                         </span>
-  <a href="gallery-single.htm">
+  <a href="#">
     {#    <img src="{{ item.image.url }}" width="100%" alt="Gallery">#}
     <div class="gallery-img" style="background-image: url({{ item.image.url }})"></div>
   </a>
   <span class="project-details"><a
-      href="{% if albums %}{% url 'gallery-photo' item.pk %}{% else %}{% url 'gallery-photo-detail' album_id item.id %}{% endif %}">{{ item.title }}</a>{{ item.description|slice:":40" }}</span>
+      href="{% if albums %}
+                {% url 'gallery-photo' item.pk %}
+                {% else %}{% url 'gallery-photo-detail' album_id item.id %}
+            {% endif %}">{{ item.title }}</a>
+      {{ item.description|striptags|slice:":80" }}
+  </span>
 </li>

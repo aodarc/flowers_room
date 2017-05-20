@@ -27,7 +27,7 @@
         {#            <li><a href="gallery-single.htm">Gallery Single</a></li>#}
         {#          </ul>#}
         {#        </li>#}
-        <li><a href="{% url 'forum' %}">Форум</a></li>
+        <li><a href="{% url 'forum' %}">Порадник</a></li>
 
         {% if not request.user.is_authenticated %}
           <li><a href="page-contact.htm" data-toggle="modal" data-target="#registration">Увійти</a></li>

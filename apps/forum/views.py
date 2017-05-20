@@ -21,6 +21,11 @@ class ForumView(FooterContextMixin, RightSideContextMixin, TemplateView):
             context['posts'] = Post.objects.filter(self.make_search_query(search)).distinct()
             return context
 
+        category = search = self.request.GET.get('category')
+        if category:
+            context['posts'] = Post.objects.filter(category_id=category)
+            return context
+
         context['posts'] = Post.objects.all()
 
         return context
