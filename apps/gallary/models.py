@@ -21,5 +21,9 @@ class Photo(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата створення')
     image = models.ImageField(upload_to='photos/', verbose_name='Картинка')
 
+    def save(self, *args, **kwargs):
+        self.description = str(self.description).replace('&nbsp;', ' ')
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.title

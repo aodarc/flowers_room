@@ -5,7 +5,7 @@
   <a href="{% url 'forum_single' item.id %}">
     <img src="{{ item.image.url }}" style="max-width: 230px" alt="Post Thumb" class="align-left"></a>
   <h4 class="title-bg"><a href="{% url 'forum_single' item.id %}">{{ item.title }}</a></h4>
-  <p>{{ item.description|striptags|slice:"150" }}</p>
+  <p>{{ item.description|striptags|safe|slice:"150" }}</p>
   <a href="{% url 'forum_single' item.id %}">
     <button class="btn btn-mini btn-inverse" type="button">Читати більше</button>
   </a>

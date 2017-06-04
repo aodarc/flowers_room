@@ -16,7 +16,9 @@
   $(function() {
     initialiseCKEditor();
     initialiseCKEditorInInlinedForms();
-
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.fillEmptyBlocks = false;
+    CKEDITOR.config.forcePasteAsPlainText = true;
     function initialiseCKEditorInInlinedForms() {
       try {
         $(document).on("click", ".add-row a, .grp-add-handler", function () {
@@ -39,6 +41,10 @@
               CKEDITOR.plugins.addExternal(this[0], this[1], this[2]);
           });
           CKEDITOR.replace($(this).attr('id'), $(this).data('config'));
+              CKEDITOR.config.autoParagraph = false;
+              CKEDITOR.config.fillEmptyBlocks = false;
+              CKEDITOR.config.forcePasteAsPlainText = true;
+
         }
       });
     }

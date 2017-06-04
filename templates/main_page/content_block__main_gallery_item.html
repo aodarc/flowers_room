@@ -1,5 +1,5 @@
 {% load static %}
-<li class="span3 gallery-item" data-id="id-6" data-type="illustration design">
+<li class="span3 gallery-item" data-id="id-6" data-type="{{ item.category.name }}">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
                                 <a href="{{ item.image.url }}"

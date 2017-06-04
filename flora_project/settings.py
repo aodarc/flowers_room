@@ -195,5 +195,6 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath'
         ]),
-    }
+    },
+    'fillEmptyBlock': False
 }

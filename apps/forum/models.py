@@ -27,6 +27,10 @@ class Post(models.Model):
     def __str__(self):
         return 'ID({}) {}'.format(self.id, self.title)
 
+    def save(self, *args, **kwargs):
+        self.description = str(self.description).replace('&nbsp;', ' ')
+        super().save(*args, **kwargs)
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=255, verbose_name='Тег', db_index=True)

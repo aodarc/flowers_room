@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- Gallery Item 1 -->
-<li class="span4 gallery-item" data-id="id-{{ counter }}" data-type="illustration">
+<li class="span4 gallery-item" data-id="id-{{ counter }}" data-type="{{ item.category.name }}">
                         <span class="gallery-hover-3col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
                                 <a href="{{ item.image.url }}"
@@ -19,6 +19,6 @@
                 {% url 'gallery-photo' item.pk %}
                 {% else %}{% url 'gallery-photo-detail' album_id item.id %}
             {% endif %}">{{ item.title }}</a>
-      {{ item.description|striptags|slice:":80" }}
+      {{ item.description|striptags|safe|slice:":80" }}
   </span>
 </li>
