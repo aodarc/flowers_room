@@ -14,5 +14,7 @@ class MainPageView(FooterContextMixin, TemplateView):
         context['photoalbums'] = Album.objects.all()
         context['random_photos'] = Photo.objects.all().order_by('?')[:12]
         context['lasted_post'] = Post.objects.all()[:3]
+        context['comments_block'] = Post.objects.filter(
+            comments__isnull=False).prefetch_related('comments').distinct()[:5]
 
         return context

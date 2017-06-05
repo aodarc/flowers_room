@@ -23,7 +23,7 @@ from apps.userprofile.views import RegistrationView, LogInView, LogOutView
 from flora_project.views import MainPageView
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', MainPageView.as_view(), name='main_page'),
     url(r'^forum/', include('apps.forum.urls')),

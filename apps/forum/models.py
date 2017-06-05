@@ -23,7 +23,6 @@ class Post(models.Model):
     category = models.ForeignKey(to=Category, related_name='posts')
     tags = models.ManyToManyField(to='Tag', related_name='posts')
 
-
     def __str__(self):
         return 'ID({}) {}'.format(self.id, self.title)
 
@@ -48,6 +47,10 @@ class Comment(models.Model):
     def __str__(self):
         return 'ID({}) PostID({}) Author({})'.format(self.id, self.post_id, self.author_id)
 
+    def save(self, *args, **kwargs):
+        self.text = str(self.text).replace('&nbsp;', ' ')
+        super().save(*args, **kwargs)
+
 
 class Answer(models.Model):
     comment = models.ForeignKey(to=Comment, verbose_name='До коментаря', related_name='answers')
@@ -57,3 +60,7 @@ class Answer(models.Model):
 
     def __str__(self):
         return 'ID({}) CommentID({}) Author({})'.format(self.id, self.comment_id, self.author_id)
+
+    def save(self, *args, **kwargs):
+        self.text = str(self.text).replace('&nbsp;', ' ')
+        super().save(*args, **kwargs)

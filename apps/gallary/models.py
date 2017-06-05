@@ -12,6 +12,10 @@ class Album(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        self.description = str(self.description).replace('&nbsp;', ' ')
+        super().save(*args, **kwargs)
+
 
 class Photo(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
