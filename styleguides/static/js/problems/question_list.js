@@ -14,6 +14,10 @@ function get_next_question(next_url) {
                 // save next question in data attr
                 question_title.data('next-question-id', data.next);
             }
+            else {
+                // clean next attribute
+                question_title.data('next-question-id', '');
+            }
 
             // deselect input when question was changed
             radio_answers.prop('checked', false);
