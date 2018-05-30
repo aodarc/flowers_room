@@ -37,9 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'sass_processor',
     'apps.forum',
     'apps.gallary',
     'apps.userprofile',
+    'apps.flowers',
+    'apps.problems',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +132,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "styleguides/static"),
 )
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PRECISION = 8
+SASS_OUTPUT_STYLE = 'nested'
+SASS_PROCESSOR_ROOT = STATIC_ROOT
 
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = "uploads/"

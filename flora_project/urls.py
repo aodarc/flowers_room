@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^$', MainPageView.as_view(), name='main_page'),
     url(r'^forum/', include('apps.forum.urls')),
     url(r'^gallery/', include('apps.gallary.urls')),
+    url(r'^questions/', include('apps.problems.urls')),
     url(r'^log-in$', LogInView.as_view(), name='login'),
     url(r'^log-out$', LogOutView.as_view(), name='logout'),
     url(r'^registration$', RegistrationView.as_view(), name='registration')

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static sass_tags %}
+
+{% block script_header %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% sass_src 'scss/question_page.scss' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container main-container">
+    <!-- Page Content
+    ================================================== -->
+    <div class="row">
+      <h1>Хоч пораду? Получай!!!</h1>
+
+      <form action="" id="questions_form">
+        {% include 'problems/single_question.html' %}
+      </form>
+
+    </div>
+    <!-- Page Content
+      ================================================== -->
+  </div>
+
+{% endblock %}
+
+{% block script_bottom %}
+  <script type="text/javascript" src="{% static "js/problems/question_list.js" %}"></script>
+{% endblock %}

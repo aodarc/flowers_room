@@ -64,5 +64,7 @@
 {% if not request.user.is_authenticated %}
   {% include 'registration_modal_form.html' %}
 {% endif %}
+  {% block script_bottom %}
+  {% endblock %}
 </body>
 </html>

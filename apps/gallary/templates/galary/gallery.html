@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block script_header %}
+  {{ block.super }}
   <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
   <script src="{% static 'js/jquery.quicksand.js' %}"></script>
 {% endblock %}
