@@ -21,7 +21,7 @@ class Advice(models.Model):
 
 
 class Answer(models.Model):
-    advice = models.ForeignKey(to=Advice, related_name='advices')
+    advice = models.ForeignKey(to=Advice, related_name='answers')
     text = RichTextUploadingField(verbose_name="Текст коментаря")
     expert = models.ForeignKey(to=User,
                                null=True,

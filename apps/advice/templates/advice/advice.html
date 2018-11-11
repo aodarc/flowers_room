@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script_header %}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="container main-container">
+
+
+    <!-- Blog Content
+    ================================================== -->
+    <div class="row"><!--Container row-->
+
+      <!-- Blog Full Post
+      ================================================== -->
+      <div class="span8 blog">
+
+        <!-- Blog Post 1 -->
+        <article>
+          <h3 class="title-bg"><a href="#">{{ post.title }}</a></h3>
+          <div class="post-content">
+            <a href="#"><img width="100%" src="{{ post.image.url }}" alt="Post Thumb"></a>
+
+            <div class="post-body">
+              {{ post.description|safe }}
+            </div>
+
+            <div class="post-summary-footer">
+              <ul class="post-data">
+                <li><i class="icon-calendar"></i> {{ post.created|date:"d/m/Y" }}</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post Comments
+        ================================================== -->
+        {% if post.answers %}
+          {% include 'advice/content_block__advice_comments_block.html' %}
+        {% endif %}
+
+      </div><!--Close container row-->
+
+      {% include 'forum/content_block_right_side_block.html' %}
+    </div>
+
+  </div> <!-- End Container -->
+
+{% endblock %}

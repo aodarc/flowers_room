@@ -39,7 +39,7 @@
                             {% if request.user.is_superuser %}
                                 <li><a href="/admin">Панель адміністрування</a></li>
                             {% endif %}
-                            <li><a href="/admin">Мої поради експерта</a></li>
+                            <li><a href="{% url 'advice:list' %}">Мої поради експерта</a></li>
                             <li><a href="{% url 'logout' %}">Вихід</a></li>
                         </ul>
                     </li>

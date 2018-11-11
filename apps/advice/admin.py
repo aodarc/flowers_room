@@ -7,8 +7,9 @@ from django.db import models
 from apps.advice.models import Advice, Answer
 
 
-class AnswerInline(admin.TabularInline):
+class AnswerInline(admin.StackedInline):
     model = Answer
+    extra = 1
 
 
 class AdviceAdmin(admin.ModelAdmin):

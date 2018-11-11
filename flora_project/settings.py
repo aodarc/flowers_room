@@ -151,6 +151,13 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
     },
+    'advice': {
+        'width': 500
+    },
+    'answer':{
+        'width': 600,
+        'height': 150
+    },
     'comment': {
         'skin': 'moono',
         # 'skin': 'office2013',

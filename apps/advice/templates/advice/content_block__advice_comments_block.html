@@ -1,0 +1,30 @@
+{% load static %}
+<section class="comments">
+  <h4 class="title-bg"><a name="comments"></a>{{ post.answers.count }} Відповідей</h4>
+  <ul>
+    {% for comment in post.answers.all %}
+      {% include 'forum/content_block__forum_comment.html' %}
+    {% endfor %}
+
+  </ul>
+
+  {% if request.user.is_authenticated %}
+    <!-- Comment Form -->
+    <div class="comment-form-container">
+      <h6>Відповісти</h6>
+      <form action="{% url 'forum-add-comment' post.id %}" method="post" id="comment-form">
+        {% csrf_token %}
+        <div class="input-prepend">
+          <span class="add-on"><i class="icon-user"></i></span>
+          <input disabled class="span4" size="16" type="text" placeholder="{{ request.user.get_full_name }}">
+        </div>
+        {{ form.text }}
+        <div class="row">
+          <div class="span2">
+            <input type="submit" class="btn btn-inverse" value="Post My Comment">
+          </div>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+</section><!-- Close comments section-->
