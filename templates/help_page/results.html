@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script_header %}
+{% endblock %}
+
+{% block content %}
+  <div class="container main-container">
+
+    <!-- Blog Content
+    ================================================== -->
+    <div class="row">
+
+      <!-- Blog Posts
+      ================================================== -->
+      <div class="span8 blog">
+
+        <h1>Захворювання та рекомендації.</h1>
+
+        <article>
+          <div class="post-content">
+            <div class="post-body">
+              <h6>Швидше за все у вас "Павутинний кліщ".</h6>
+              Заходи боротьби та профілактики:
+              <ol>
+                <li>промивання листя і пагонів водою при невеликій чисельності шкідника;</li>
+                <li>обприскування мильним розчином, обов’язково захоплюючи нижні сторони листків;</li>
+                <li>обробка препаратом «Фітоверм» згідно з інструкцією;</li>
+                <li>обробка акарицидами, сірчано-дегтярною емульсією, відваром хвоща польового;</li>
+                <li>проведення регулярних поливань для зниження сухості повітря.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+
+        <article>
+          <div class="post-content">
+            <div class="post-body">
+              <h5>Корисні статті, які поможуть вирішити вашу проблему</h5>
+
+              {% for item in posts %}
+                {% include 'forum/content_block__forum_post.html' %}
+              {% endfor %}
+
+            </div>
+          </div>
+        </article>
+      </div>
+
+      {% include 'forum/content_block_right_side_block.html' %}
+
+    </div>
+
+  </div> <!-- End Container -->
+{% endblock %}

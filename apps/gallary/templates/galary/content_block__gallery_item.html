@@ -16,8 +16,8 @@
   </a>
   <span class="project-details"><a
       href="{% if albums %}
-                {% url 'gallery-photo' item.pk %}
-                {% else %}{% url 'gallery-photo-detail' album_id item.id %}
+                {% url 'gallery:gallery-photo' item.pk %}
+                {% else %}{% url 'gallery:gallery-photo-detail' album_id item.id %}
             {% endif %}">{{ item.title }}</a>
       {{ item.description|striptags|safe|slice:":80" }}
   </span>

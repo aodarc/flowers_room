@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'sass_processor',
     'apps.forum',
+    'apps.advice',
     'apps.gallary',
     'apps.userprofile',
     'apps.flowers',

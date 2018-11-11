@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script_header %}
+{% endblock %}
+
+{% block content %}
+  <div class="container main-container">
+
+    <!-- Blog Content
+    ================================================== -->
+    <div class="row">
+
+      <!-- Blog Posts
+      ================================================== -->
+      <div class="span8 blog">
+
+        <h1>Захворювання та рекомендації.</h1>
+        <h6>Ми допоможиво визначити хворобу вашої рослини, лише, дайте відповідь на кілька запитань</h6>
+
+
+        <article>
+          <div class="post-content">
+            <div class="post-body">
+              <h5>Рослина знаходиться у сухому та теплому приміщенні?</h5>
+              <form action="/">
+
+                <label>
+                  <input type="radio"name="answer">
+                  Так
+                </label>
+                 <label>
+                  <input type="radio"name="answer">
+                   Ні
+                </label>
+                 <label>
+                  <input type="radio"name="answer">
+                   Не знаю
+                </label>
+                <button class="btn">Відповісти</button>
+              </form>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      {% include 'forum/content_block_right_side_block.html' %}
+
+    </div>
+
+  </div> <!-- End Container -->
+{% endblock %}

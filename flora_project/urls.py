@@ -20,14 +20,17 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 from apps.userprofile.views import RegistrationView, LogInView, LogOutView
-from flora_project.views import MainPageView
+from flora_project.views import MainPageView, HelpPageView, ResultHelpPageView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', MainPageView.as_view(), name='main_page'),
+    url(r'^help/$', HelpPageView.as_view(), name='help_page'),
+    url(r'^help/results$', ResultHelpPageView.as_view(), name='help_page_results'),
     url(r'^forum/', include('apps.forum.urls')),
-    url(r'^gallery/', include('apps.gallary.urls')),
+    url(r'^gallery/', include('apps.gallary.urls', namespace='gallery')),
+    url(r'^advice/', include('apps.advice.urls', namespace='advice')),
     url(r'^questions/', include('apps.problems.urls')),
     url(r'^log-in$', LogInView.as_view(), name='login'),
     url(r'^log-out$', LogOutView.as_view(), name='logout'),

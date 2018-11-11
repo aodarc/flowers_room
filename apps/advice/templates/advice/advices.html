@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script_header %}
+{% endblock %}
+
+{% block content %}
+  <div class="container main-container">
+
+    <!-- Blog Content
+    ================================================== -->
+    <div class="row">
+
+      <!-- Blog Posts
+      ================================================== -->
+      <div class="span8 blog">
+
+        {% for item in posts %}
+          {% include 'advice/content_block__advice_block.html' %}
+        {% endfor %}
+
+        <!-- Pagination -->
+{#        <div class="pagination">#}
+{#          <ul>#}
+{#            <li class="active"><a href="#">Prev</a></li>#}
+{#            <li class="active"><a href="#">1</a></li>#}
+{#            <li><a href="#">2</a></li>#}
+{#            <li><a href="#">3</a></li>#}
+{#            <li><a href="#">4</a></li>#}
+{#            <li><a href="#">Next</a></li>#}
+{#          </ul>#}
+{#        </div>#}
+      </div>
+
+      {% include 'forum/content_block_right_side_block.html' %}
+
+    </div>
+
+  </div> <!-- End Container -->
+{% endblock %}

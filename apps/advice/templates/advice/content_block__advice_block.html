@@ -1,0 +1,15 @@
+{% load static %}
+
+<!-- advice Post 1 -->
+<article class="clearfix">
+  <a href="{% url 'advice:detail' item.id %}">
+    <img src="{{ item.image.url }}" style="max-width: 230px" alt="Post Thumb" class="align-left"></a>
+  <h4 class="title-bg"><a href="{% url 'advice:detail' item.id %}">{{ item.title }}</a></h4>
+  <p>{{ item.description|striptags|safe|slice:"200" }}</p>
+  <div class="post-summary-footer">
+    <ul class="post-data-3">
+      <li><i class="icon-calendar"></i> {{ item.created|date:"d/m/Y" }}</li>
+      <li><i class="icon-comment"></i> <a href="#">{{ item.advices.count }} Коментарів</a></li>
+    </ul>
+  </div>
+</article>

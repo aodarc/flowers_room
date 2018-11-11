@@ -1,3 +1,4 @@
+from django.contrib.auth.views import LoginView, logout
 from django.views.generic import TemplateView
 
 from apps.gallary.models import Album, Photo

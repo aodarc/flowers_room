@@ -34,7 +34,7 @@
         <ul class="img-feed">
           {# {{ random_photos }} #}
           {% for p in footer_photos %}
-            <li><a href="{% url 'gallery-photo-detail' p.album_id p.id %}"><img width="60px" src="{{ p.image.url }}"
+            <li><a href="{% url 'gallery:gallery-photo-detail' p.album_id p.id %}"><img width="60px" src="{{ p.image.url }}"
                                                                                 alt="Image Feed"></a></li>
           {% endfor %}
         </ul>
@@ -48,7 +48,7 @@
           <div class="span6">
                             <span class="right">
                             <a href="{% url 'main_page' %}">Домівка</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                                href="{% url 'gallery' %}">Галерея</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
+                                href="{% url 'gallery:gallery' %}">Галерея</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
                                 href="{% url 'forum' %}">Форум</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
                                 href="#">Контакти</a>
                             </span>
