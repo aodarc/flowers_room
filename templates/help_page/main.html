@@ -22,22 +22,22 @@
         <article>
           <div class="post-content">
             <div class="post-body">
-              <h5>Рослина знаходиться у сухому та теплому приміщенні?</h5>
-              <form action="/">
+              <h5 id="question">Рослина знаходиться у сухому та теплому приміщенні?</h5>
+              <form id="form" action="/">
 
                 <label>
-                  <input type="radio"name="answer">
+                  <input type="radio" name="answer">
                   Так
                 </label>
-                 <label>
-                  <input type="radio"name="answer">
-                   Ні
+                <label>
+                  <input type="radio" name="answer">
+                  Ні
                 </label>
-                 <label>
-                  <input type="radio"name="answer">
-                   Не знаю
+                <label>
+                  <input type="radio" name="answer">
+                  Не знаю
                 </label>
-                <button class="btn">Відповісти</button>
+                <button class="btn" type="reset" id="btn-submit">Відповісти</button>
               </form>
             </div>
           </div>
@@ -49,4 +49,34 @@
     </div>
 
   </div> <!-- End Container -->
+  <script type="application/javascript">
+
+      window.addEventListener("load", function (event) {
+          let button = $('#btn-submit');
+          let question = $('#question');
+
+          const questions = [
+              'Рослина знаходиться у сухому та теплому приміщенні?',
+              'Біля рослини чи на ній є сухе листя?',
+              'На листках/квітах присутні частинки пилу?',
+              'На рослині є дрібні знебарвлені крапки або плями?',
+              'Чи присутня на зворотньому боці листка павутина?',
+              'Листки скручені (можливо навіть в трубочку)?'
+          ];
+          let index = 0;
+
+          button.on('click', () => {
+              if (index < questions.length) {
+                  question.hide(700, () => {
+                      question.text(questions[index++]);
+                      question.show(700);
+                  });
+
+              } else {
+                  window.location.href = '/help/results';
+              }
+          })
+      });
+
+  </script>
 {% endblock %}
