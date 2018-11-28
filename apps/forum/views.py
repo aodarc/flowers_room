@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import TemplateView
 
-from apps.forum.models import Post, Comment
+from apps.forum.models import Post, Comment, Topic
 from flora_project.mixins import FooterContextMixin, RightSideContextMixin
 from .forms import CommentForm
 
@@ -64,3 +64,14 @@ def add_comment(request, pk):
             )
 
     return redirect(reverse('forum_single', kwargs={'pk': pk}))
+
+
+class TopicView(FooterContextMixin, RightSideContextMixin, TemplateView):
+    template_name = 'forum/topic_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['posts'] = Topic.objects.all()
+
+        return context

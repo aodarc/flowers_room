@@ -64,3 +64,11 @@ class Answer(models.Model):
     def save(self, *args, **kwargs):
         self.text = str(self.text).replace('&nbsp;', ' ')
         super().save(*args, **kwargs)
+
+
+class Topic(models.Model):
+    text = models.CharField(max_length=255)
+    created = models.DateTimeField(auto_created=True)
+
+    def __str__(self):
+        return self.text

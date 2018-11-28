@@ -1,0 +1,14 @@
+{% load static %}
+
+<!-- Blog Post 1 -->
+<article class="clearfix">
+
+  <h4 class="title-bg"><a href="{% url 'forum_single' item.id %}">{{ item.text }}</a></h4>
+  <p>{{ item.description|striptags|safe|slice:"150" }}</p>
+  <div class="post-summary-footer">
+    <ul class="post-data-3">
+      <li><i class="icon-calendar"></i> {{ item.created|date:"d/m/Y" }}</li>
+      <li><i class="icon-comment"></i> <a href="#">55 Коментарів</a></li>
+    </ul>
+  </div>
+</article>

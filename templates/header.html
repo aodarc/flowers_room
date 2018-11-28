@@ -28,6 +28,7 @@
                 {#          </ul>#}
                 {#        </li>#}
                 <li><a href="{% url 'forum' %}">Порадник</a></li>
+                <li><a href="{% url 'topic' %}">Форум</a></li>
 
                 {% if not request.user.is_authenticated %}
                     <li><a href="page-contact.htm" data-toggle="modal" data-target="#registration">Увійти</a></li>
