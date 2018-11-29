@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
-    'sass_processor',
+    # 'sass_processor',
     'apps.forum',
     'apps.advice',
     'apps.gallary',
