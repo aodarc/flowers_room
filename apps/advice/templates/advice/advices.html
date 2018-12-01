@@ -30,12 +30,15 @@
             <div class="modal-body">
 
               <div>
-                <p>{{ form }}</p>
+                <form action="{% url 'advice:add_advice' %}" method="post" id="advice" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                </form>
               </div>
             </div>
             <div class="modal-footer">
               <button class="btn" data-dismiss="modal" aria-hidden="true">Відміна</button>
-              <button class="btn btn-primary">Надіслати</button>
+              <button class="btn btn-primary" type="submit" form="advice">Надіслати</button>
             </div>
           </div>
 

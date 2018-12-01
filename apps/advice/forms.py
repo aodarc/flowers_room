@@ -13,9 +13,9 @@ class AnswerForm(forms.ModelForm):
 
 
 class AdviceForm(forms.ModelForm):
-    title = forms.CharField(label='Title')
-    image = forms.ImageField()
-    description = forms.CharField(widget=CKEditorWidget(config_name='advice'))
+    title = forms.CharField(label='Заголовок')
+    image = forms.ImageField(label='Зображення')
+    description = forms.CharField(widget=CKEditorWidget(config_name='advice'), label='Опис')
 
     class Meta:
         model = Advice

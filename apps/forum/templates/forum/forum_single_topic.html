@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block script_header %}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="container main-container">
+
+
+    <!-- Blog Content
+    ================================================== -->
+    <div class="row"><!--Container row-->
+
+      <!-- Blog Full Post
+      ================================================== -->
+      <div class="span8 blog">
+
+      <h1>{{ post.text }}</h1>
+
+        <!-- Post Comments
+        ================================================== -->
+        {% if post.comments %}
+          {% include 'forum/content_block__forum_comments_block.html' %}
+        {% endif %}
+      </div><!--Close container row-->
+
+      {% include 'forum/content_block_right_side_block.html' %}
+    </div>
+
+  </div> <!-- End Container -->
+
+{% endblock %}

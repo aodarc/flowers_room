@@ -75,3 +75,15 @@ class TopicView(FooterContextMixin, RightSideContextMixin, TemplateView):
         context['posts'] = Topic.objects.all()
 
         return context
+
+
+class SingleTopicPost(FooterContextMixin, RightSideContextMixin, TemplateView):
+    template_name = 'forum/forum_single_topic.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['post'] = get_object_or_404(klass=Topic, id=self.kwargs['pk'])
+        context['form'] = CommentForm()
+
+        return context

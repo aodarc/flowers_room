@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 from apps.advice.forms import AnswerForm, AdviceForm
@@ -28,3 +29,17 @@ class SingleAdvice(FooterContextMixin, RightSideContextMixin, TemplateView):
         context['form'] = AnswerForm()
 
         return context
+
+
+def add_advice(request):
+
+    form = AdviceForm(request.POST, files=request.FILES)
+
+    if form.is_valid():
+        data = form.cleaned_data.copy()
+        data['author'] = request.user
+        Advice.objects.create(
+            **data
+        )
+
+    return redirect(reverse('advice:list'))

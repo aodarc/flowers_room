@@ -38,7 +38,7 @@ class Tag(models.Model):
         return self.name
 
 
-class Comment(models.Model):
+class CommentBase(models.Model):
     post = models.ForeignKey(to=Post, related_name='comments')
     text = RichTextUploadingField(verbose_name="Текст коментаря")
     author = models.ForeignKey(to=User, verbose_name='Автор')
@@ -51,8 +51,15 @@ class Comment(models.Model):
         self.text = str(self.text).replace('&nbsp;', ' ')
         super().save(*args, **kwargs)
 
+    class Meta:
+        abstract = True
 
-class Answer(models.Model):
+
+class Comment(CommentBase):
+    pass
+
+
+class AnswerBase(models.Model):
     comment = models.ForeignKey(to=Comment, verbose_name='До коментаря', related_name='answers')
     text = RichTextUploadingField(verbose_name="Текст коментаря")
     author = models.ForeignKey(to=User, verbose_name='Автор')
@@ -65,6 +72,13 @@ class Answer(models.Model):
         self.text = str(self.text).replace('&nbsp;', ' ')
         super().save(*args, **kwargs)
 
+    class Meta:
+        abstract = True
+
+
+class Answer(AnswerBase):
+    pass
+
 
 class Topic(models.Model):
     text = models.CharField(max_length=255)
@@ -72,3 +86,19 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.text
+
+    @property
+    def comments_count(self):
+        return self.comments.count()
+
+    @property
+    def checks(self):
+        return abs(self.comments_count*4 - self.created.day // 3) if self.id % 3 else 0
+
+
+class TopicComment(CommentBase):
+    post = models.ForeignKey(to=Topic, related_name='comments')
+
+
+class TopicAnswer(AnswerBase):
+    comment = models.ForeignKey(to=TopicComment, verbose_name='До коментаря', related_name='answers')

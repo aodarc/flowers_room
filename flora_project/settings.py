@@ -159,6 +159,7 @@ CKEDITOR_CONFIGS = {
         'height': 150
     },
     'comment': {
+        'width': 700,
         'skin': 'moono',
         # 'skin': 'office2013',
         'toolbar_Basic': [
