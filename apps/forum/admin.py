@@ -4,7 +4,7 @@ from django.db import models
 
 
 # Register your models here.
-from apps.forum.models import Post, Comment, Tag, Answer, Category, Topic
+from apps.forum.models import Post, Comment, Tag, Answer, Category, Topic, TopicAnswer, TopicComment
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -24,3 +24,5 @@ admin.site.register(Category)
 admin.site.register(Topic)
 admin.site.register(Tag)
 admin.site.register(Answer)
+admin.site.register(TopicAnswer)
+admin.site.register(TopicComment)
